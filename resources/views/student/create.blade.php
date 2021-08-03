@@ -19,7 +19,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="photo">Photo</label>
+                            <label for="photo">Student Photo</label>
                             <input id="photo" class="form-control-file" type="file" name="photo">
                         </div>
                         <div class="form-group">

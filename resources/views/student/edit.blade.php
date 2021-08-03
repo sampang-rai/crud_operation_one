@@ -15,9 +15,18 @@
                             </div>
                         @endif
                     </div>
-                    <form action="/students/{{ $student->id }}" method="post">
+                    <form action="/students/{{ $student->id }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
+
+                        <div my-2>
+                            <img src="{{ asset($student->photo) }}" alt="" width="150">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photo">Student Photo</label>
+                            <input id="photo" class="form-control-file" type="file" name="photo">
+                        </div>
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input id="name" class="form-control" type="text" name="name" value="{{ $student->name }}">
