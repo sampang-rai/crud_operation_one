@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/student" class="btn btn-primary btn-sm">Back</a>
+                        <a href="/students" class="btn btn-primary btn-sm">Back</a>
                     </div>
                     <div class="card-body"></div>
                     <div class="my-2">
@@ -15,8 +15,13 @@
                             </div>
                         @endif
                     </div>
-                    <form action="/student" method="post">
+                    <form action="/students" method="post" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group">
+                            <label for="photo">Photo</label>
+                            <input id="photo" class="form-control-file" type="file" name="photo">
+                        </div>
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}">

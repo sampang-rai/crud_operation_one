@@ -53,6 +53,12 @@ class StudentController extends Controller
         $student->address = $request->address;
         $student->guardian = $request->guardian;
         $student->faculty_id = $request->faculty_id;
+        if($request->hasFile('photo')){
+            $fileName = $request->photo;
+            $newName = time() . $fileName->getClientOriginalName();
+            $fileName->move('student', $newName);
+            $student->photo = 'student/' .$newName;
+        }
         $student->save();
 
         $request->session()->flash('message','Student created successfully');

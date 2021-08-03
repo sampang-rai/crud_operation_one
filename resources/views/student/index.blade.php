@@ -5,13 +5,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/student/create" class="btn btn-primary btn-sm">Add Student</a>
+                        <a href="/students/create" class="btn btn-primary btn-sm">Add Student</a>
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Photo</th>
                                     <th>Name</th>
                                     <th>Address</th>
                                     <th>Mobile</th>
@@ -23,15 +24,16 @@
                                 @foreach ($students as $index=> $student)
                                     <tr>
                                         <td>{{ ++$index }}</td>
+                                        <td>{{ $student->photo }}</td>
                                         <td>{{ $student->name }}</td>
                                         <td>{{ $student->address }}</td>
                                         <td>{{ $student->mobile }}</td>
                                         <td>{{ $student->faculty->name }}</td>
                                         <td>
-                                            <form action="/student/{{ $student->id }}" method="post">
+                                            <form action="/students/{{ $student->id }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="/student/{{ $student->id }}/edit" class="badge bg-primary text-decoration-none" >Edit</a>
+                                                <a href="/students/{{ $student->id }}/edit" class="badge bg-primary text-decoration-none" >Edit</a>
                                                 <button type="submit" class="btn badge bg-danger text-decoration-none">Delete</button>
                                             </form>
                                         </td>

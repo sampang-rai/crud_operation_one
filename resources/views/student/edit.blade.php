@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/student" class="btn btn-primary btn-sm">Back</a>
+                        <a href="/students" class="btn btn-primary btn-sm">Back</a>
                     </div>
                     <div class="card-body"></div>
                     <div class="my-2">
@@ -15,7 +15,7 @@
                             </div>
                         @endif
                     </div>
-                    <form action="/student/{{ $student->id }}" method="post">
+                    <form action="/students/{{ $student->id }}" method="post">
                         @csrf
                         @method('put')
                         <div class="form-group">
