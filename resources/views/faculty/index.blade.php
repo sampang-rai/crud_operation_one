@@ -17,6 +17,17 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($faculties as $faculty)
+                                    <tr>
+                                        <td>{{ $faculty->id }}</td>
+                                        <td>{{ $faculty->name }}</td>
+                                        <td>
+                                            <a href="" class="badge bf-primary">Edit</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
