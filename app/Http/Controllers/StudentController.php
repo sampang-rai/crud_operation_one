@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Faculty;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Location;
 
 class StudentController extends Controller
 {
@@ -55,8 +56,9 @@ class StudentController extends Controller
         $student->faculty_id = $request->faculty_id;
 
         if($request->hasFile('photo')){
+            
             $fileName = $request->photo;
-            $newName = time() . $fileName->getClientOriginalName();
+            $newName =  $fileName->getClientOriginalName();
             $fileName->move('student', $newName);
             $student->photo = 'student/' .$newName;
         }
