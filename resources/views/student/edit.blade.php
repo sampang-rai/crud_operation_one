@@ -15,12 +15,13 @@
                             </div>
                         @endif
                     </div>
+                    <!-- Photo -->
                     <form action="/students/{{ $student->id }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
 
                         <div my-2>
-                            <img src="{{ asset($student->photo) }}" alt="" width="150">
+                            <img src="{{ asset($student->photo) }}" alt="" width="120">
                         </div>
 
                         <div class="form-group">

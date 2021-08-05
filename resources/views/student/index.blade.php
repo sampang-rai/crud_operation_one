@@ -24,7 +24,7 @@
                                 @foreach ($students as $index=> $student)
                                     <tr>
                                         <td>{{ ++$index }}</td>
-                                        <td>{{ $student->photo }}</td>
+                                        <td><img src="{{ asset($student->photo) }}" alt="" width="50"></td>
                                         <td>{{ $student->name }}</td>
                                         <td>{{ $student->address }}</td>
                                         <td>{{ $student->mobile }}</td>
