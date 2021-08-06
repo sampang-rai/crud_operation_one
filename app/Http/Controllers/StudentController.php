@@ -58,9 +58,14 @@ class StudentController extends Controller
         if($request->hasFile('photo')){
             
             $fileName = $request->photo;
-            $newName =  $fileName->getClientOriginalName();
+            $newName = time() . '_' . $request->name . '_' . $fileName->getClientOriginalName();
             $fileName->move('student', $newName);
             $student->photo = 'student/' .$newName;
+
+            // $fileName = $request->photo;
+            // $newName = time() . '/'. $request->name . '/' . $fileName->getClientOriginalName();
+            // $fileName->move('student', $newName);
+            // $student->photo = 'student/' .$newName;
         }
 
         $student->save();
@@ -120,10 +125,16 @@ class StudentController extends Controller
         $student->faculty_id = $request->faculty_id;
 
         if($request->hasFile('photo')){
+
             $fileName = $request->photo;
-            $newName = time() . $fileName->getClientOriginalName();
-            $fileName->move('student', $newName);
-            $student->photo = 'student/' .$newName;
+            $newName = $fileName->getClientOriginalName();
+            $fileName->move ('student', $newName);
+            $request->photo = 'student/'.$newName;
+            
+            // $fileName = $request->photo;
+            // $newName = $request->name . $fileName->getClientOriginalName();
+            // $fileName->move('student', $newName);
+            // $request->name = 'student/' .$newName;
         }
         
         $student->update();
