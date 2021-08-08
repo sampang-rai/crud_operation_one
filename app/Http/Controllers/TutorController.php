@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faculty;
-use App\Models\Teacher;
+use App\Models\Tutor;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
-class TeacherController extends Controller
+class TutorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
-        return view('teachers.index',compact('teachers'));
+        $tutors = Tutor::all();
+        return view('tutor.index',compact('tutors'));
     }
 
     /**
@@ -26,8 +26,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        $faculties = Faculty::all();
-        return view('teachers.create',compact('faculties'));
+        return view('tutor.create');
     }
 
     /**
@@ -38,14 +37,20 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        $teacher = new Teacher();
-        $teacher->name = $request->name;
-        $teacher->address = $request->address;
-        $teacher->mobile = $request->mobile;
-        $teacher->faculty_id = $request->faculty_id;
-        $teacher->save();
-        return redirect()->back();
+        $tutor = new Tutor();
+        $tutor->name = $request->name;
+        $tutor->address = $request->address;
+        $tutor->mobile = $request->mobile;
 
+        $image = $request->photo;
+        $filename = time(). '_' . $request->name . '_' . $image->getClientOriginalName();
+        $image_resize= Image::make($image->getRealPath());
+        $image_resize->resize(800,600);
+        $image_resize->save(public_path('images/' .$filename));
+        $tutor->photo = 'tutor/' .$filename;
+
+        $tutor->save();
+        return redirect()->back();
     }
 
     /**
@@ -67,7 +72,7 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        return view('teachers.edit');
+        //
     }
 
     /**
@@ -79,13 +84,7 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $teacher = Teacher::find($id);
-        $teacher->name = $request->name;
-        $teacher->address = $request->address;
-        $teacher->mobile = $request->mobile;
-        $teacher->faculty_id = $request->faculty_id;
-        $teacher->update();
-        return redirect()->back();
+        //
     }
 
     /**
@@ -96,7 +95,6 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        $teacher = Teacher::find($id);
-        $teacher->delete();
+        //
     }
 }

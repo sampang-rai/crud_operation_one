@@ -1,9 +1,14 @@
 @extends('app')
 @section('content')
     <div class="container">
-        <a href="/teacher" class="btn btn-primary btn-sm">Back</a>
-        <form action="/teacher" method="post">
+        <a href="/teachers" class="btn btn-primary btn-sm">Back</a>
+        <form action="/teachers" method="post" enctype="multipart/form-data">
             @csrf
+            <div class="form-group">
+                <label for="photo">Teacher Photo</label>
+                <input id="photo" class="form-control-file" type="file" name="photo">
+            </div>
+
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input id="name" class="form-control" type="text" name="name">

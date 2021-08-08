@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Faculty;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use phpDocumentor\Reflection\Location;
 
 class StudentController extends Controller
@@ -59,7 +60,9 @@ class StudentController extends Controller
             
             $fileName = $request->photo;
             $newName = time() . '_' . $request->name . '_' . $fileName->getClientOriginalName();
-            $fileName->move('student', $newName);
+            $image_resize= Image::make($fileName->getRealPath());
+            $image_resize->resize(800,600);
+            $image_resize->save(public_path('student/' .$newName));
             $student->photo = 'student/' .$newName;
 
             // $fileName = $request->photo;
@@ -131,10 +134,6 @@ class StudentController extends Controller
             $fileName->move ('student', $newName);
             $request->photo = 'student/'.$newName;
             
-            // $fileName = $request->photo;
-            // $newName = $request->name . $fileName->getClientOriginalName();
-            // $fileName->move('student', $newName);
-            // $request->name = 'student/' .$newName;
         }
         
         $student->update();

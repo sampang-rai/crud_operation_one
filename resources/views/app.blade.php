@@ -221,10 +221,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="/teacher" class="nav-link">
+            <a href="/teachers" class="nav-link">
               <i class="nav-icon fas fa-chalkboard-teacher"></i>
               <p>
                 Teacher
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/tutor" class="nav-link">
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
+              <p>
+                Tutor
               </p>
             </a>
           </li>

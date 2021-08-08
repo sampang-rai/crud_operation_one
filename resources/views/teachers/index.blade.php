@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <div class="container">
-        <a href="/teacher/create" class="btn btn-primary btn-sm">Add Teacher</a>
+        <a href="/teachers/create" class="btn btn-primary btn-sm">Add Teacher</a>
         <table class="table">
             <tr>
                 <th>#</th>

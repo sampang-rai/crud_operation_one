@@ -16,7 +16,7 @@
             <a class="nav-link" href="/faculty">Faculty</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/teacher">Teacher</a>
+            <a class="nav-link" href="/teachers">Teacher</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
