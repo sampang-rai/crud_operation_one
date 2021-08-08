@@ -5,6 +5,7 @@
         <table class="table">
             <tr>
                 <th>#</th>
+                <th>Photo</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>Mobile</th>
@@ -15,6 +16,7 @@
             @foreach ($teachers as $teacher)
                 <tr>
                     <td>{{ $teacher->id }}</td>
+                    <td><img src="{{ $teacher->photo }}" alt="" width="60"></td>
                     <td>{{ $teacher->name }}</td>
                     <td>{{ $teacher->address }}</td>
                     <td>{{ $teacher->mobile }}</td>

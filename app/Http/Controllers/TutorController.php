@@ -42,14 +42,17 @@ class TutorController extends Controller
         $tutor->address = $request->address;
         $tutor->mobile = $request->mobile;
 
-        $image = $request->photo;
-        $filename = time(). '_' . $request->name . '_' . $image->getClientOriginalName();
-        $image_resize= Image::make($image->getRealPath());
-        $image_resize->resize(800,600);
-        $image_resize->save(public_path('images/' .$filename));
-        $tutor->photo = 'tutor/' .$filename;
+        if($request->hasFile('photo')){
+            $fileName = $request->photo;
+            $newName = time(). '_' .$request->name. '_' .$fileName->getclientOriginalName();
+            $image_resize = Image::make($fileName->getRealPath());
+            $image_resize->resize(800,600);
+            $image_resize->save(public_path('tutor/' .$newName));
+            $tutor->photo = 'tutor/' .$newName;
+        }
 
         $tutor->save();
+        $request->session()->flash('message','Added Successfully!');
         return redirect()->back();
     }
 
@@ -72,7 +75,8 @@ class TutorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tutor = Tutor::find($id);
+        return view('tutor.edit',compact('tutor'));
     }
 
     /**
@@ -84,7 +88,23 @@ class TutorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tutor = Tutor::find($id);
+        $tutor->name = $request->name;
+        $tutor->address = $request->address;
+        $tutor->mobile = $request->mobile;
+
+        if($request->hasFile('photo')){
+            $fileName = $request->photo;
+            $newName = time(). '_' .$request->name. '_' .$fileName->getClientOriginalName();
+            $image_resize = Image::make($fileName->getRealPath());
+            $image_resize->resize(800,600);
+            $image_resize->save(public_path('tutor/' .$newName));
+            $tutor->photo = 'tutor/' .$newName;
+        }
+
+        $tutor->update();
+        $request->session()->flash('message', 'Updated Successfully.');
+        return redirect()->back;
     }
 
     /**

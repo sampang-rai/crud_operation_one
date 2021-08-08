@@ -64,11 +64,6 @@ class StudentController extends Controller
             $image_resize->resize(800,600);
             $image_resize->save(public_path('student/' .$newName));
             $student->photo = 'student/' .$newName;
-
-            // $fileName = $request->photo;
-            // $newName = time() . '/'. $request->name . '/' . $fileName->getClientOriginalName();
-            // $fileName->move('student', $newName);
-            // $student->photo = 'student/' .$newName;
         }
 
         $student->save();
@@ -128,18 +123,18 @@ class StudentController extends Controller
         $student->faculty_id = $request->faculty_id;
 
         if($request->hasFile('photo')){
-
+            
             $fileName = $request->photo;
-            $newName = $fileName->getClientOriginalName();
-            $fileName->move ('student', $newName);
-            $request->photo = 'student/'.$newName;
+            $newName = time() . '_' . $request->name . '_' . $fileName->getClientOriginalName();
+            $image_resize= Image::make($fileName->getRealPath());
+            $image_resize->resize(800,600);
+            $image_resize->save(public_path('student/' .$newName));
+            $student->photo = 'student/' .$newName;
             
         }
         
         $student->update();
-
         $request->session()->flash('message','Student updated successfully');
-
         return redirect()->back();
     }
 

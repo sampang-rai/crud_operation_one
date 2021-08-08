@@ -5,14 +5,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/tutor/create" class="btn btn-primary btn-sm">Add Tutor</a>
+                        <a href="/tutors/create" class="btn btn-primary btn-sm">Add Tutor</a>
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Photo</th>
+                                    {{-- <th>Photo</th> --}}
                                     <th>Full Name</th>
                                     <th>Address</th>
                                     <th>Mobile</th>
@@ -24,12 +24,13 @@
                                 @foreach ($tutors as $index => $tutor)
                                     <tr>
                                         <td>{{ ++$index }}</td>
-                                        <td><img src="{{ asset($tutor->photo) }}" alt="" width="50"></td>
+                                        {{-- <td><img src="{{ asset($tutor->photo) }}" width="50" alt="" ></td> --}}
                                         <td>{{ $tutor->name }}</td>
                                         <td>{{ $tutor->address }}</td>
                                         <td>{{ $tutor->mobile }}</td>
+                                        
                                         <td>
-                                            <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="tutors/{{ $tutor->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach

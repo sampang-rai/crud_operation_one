@@ -19,6 +19,9 @@
             <a class="nav-link" href="/teachers">Teacher</a>
           </li>
           <li class="nav-item">
+            <a href="nav-link" href="/tutors">Tutor</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
         </ul>
