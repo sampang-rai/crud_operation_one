@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faculty;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
-class FacultyController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-
-        return view('faculty.index');
+        $teachers = Teacher::all();
+        return view('teacher.index',compact('teachers'));
     }
 
     /**
@@ -26,7 +27,7 @@ class FacultyController extends Controller
     public function create()
     {
         $faculties = Faculty::all();
-        return view('faculty.create',compact('faculties'));
+        return view('teacher.create',compact('faculties'));
     }
 
     /**
@@ -37,10 +38,14 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-        $faculty = new Faculty();
-        $faculty->name = $request->name;
-        $faculty->save();
-        return redirect()->back;
+        $teacher = new Teacher();
+        $teacher->name = $request->name;
+        $teacher->address = $request->address;
+        $teacher->mobile = $request->mobile;
+        $teacher->faculty_id = $request->faculty_id;
+        $teacher->save();
+        return redirect()->back();
+
     }
 
     /**
@@ -62,7 +67,7 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('teacher.edit');
     }
 
     /**
@@ -74,7 +79,13 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $teacher->name = $request->name;
+        $teacher->address = $request->address;
+        $teacher->mobile = $request->mobile;
+        $teacher->faculty_id = $request->faculty_id;
+        $teacher->update();
+        return redirect()->back();
     }
 
     /**
@@ -85,6 +96,7 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $teacher->delete();
     }
 }
