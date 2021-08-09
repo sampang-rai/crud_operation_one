@@ -112,7 +112,7 @@ class TutorController extends Controller
 
         $tutor->update();
         $request->session()->flash('message', 'Updated Successfully.');
-        return redirect()->back;
+        return redirect()->back()->with('message','successful');
 
     } //End of Update
 

@@ -16,20 +16,23 @@
                                 <img src="{{ asset($tutor->photo) }}" alt="" width="150" style="border-radius: 50%">
                             </div>
 
-                            
-                            
+                            <div class="form-group">
+                                <label for="photo">Upload</label>
+                                <input id="photo" class="form-control-file" type="file" name="photo">
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name">Full Name</label>
-                                        <input id="name" class="form-control" type="" name="name" value="{{ $tutor->name }}" disabled>
+                                        <input id="name" class="form-control" type="" name="name" value="{{ $tutor->name }}">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <input id="address" class="form-control" type="text" name="address" value="{{ $tutor->address }}" disabled>
+                                        <input id="address" class="form-control" type="text" name="address" value="{{ $tutor->address }}">
                                     </div>
                                 </div>
                             </div>
@@ -38,10 +41,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="mobile">Mobile</label>
-                                        <input id="mobile" class="form-control" type="text" name="mobile" value="{{ $tutor->mobile }}" disabled>
+                                        <input id="mobile" class="form-control" type="text" name="mobile" value="{{ $tutor->mobile }}">
                                     </div>
                         
                                 </div>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-primary my-2">Update</button>
                             </div>
                         </form>
                     </div>
