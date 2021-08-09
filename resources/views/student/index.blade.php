@@ -34,7 +34,7 @@
                                                 @csrf
                                                 @method('delete')
                                                 <a href="/students/{{ $student->id }}/edit" class="badge bg-primary text-decoration-none" >Edit</a>
-                                                <button type="submit" onclick="return confirm('Are your sure you want to delete?')" class="btn badge bg-danger text-decoration-none">Delete</button>
+                                                <button type="submit" onclick="return confirm('Are you sure you want to delete?')" class="btn badge bg-danger text-decoration-none">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

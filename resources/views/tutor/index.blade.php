@@ -12,7 +12,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    {{-- <th>Photo</th> --}}
+                                    <th>Photo</th>
                                     <th>Full Name</th>
                                     <th>Address</th>
                                     <th>Mobile</th>
@@ -24,14 +24,23 @@
                                 @foreach ($tutors as $index => $tutor)
                                     <tr>
                                         <td>{{ ++$index }}</td>
-                                        {{-- <td><img src="{{ asset($tutor->photo) }}" width="50" alt="" ></td> --}}
+                                        <td><img src="{{ asset($tutor->photo) }}" alt="" width="60"></td>
                                         <td>{{ $tutor->name }}</td>
                                         <td>{{ $tutor->address }}</td>
                                         <td>{{ $tutor->mobile }}</td>
                                         
                                         <td>
-                                            <a href="tutors/{{ $tutor->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
+                                            <form action="/tutors/{{ $tutor->id }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                
+                                                <a href="tutors/{{ $tutor->id }}">view</a>
+                                                <a href="tutors/{{ $tutor->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
+                                                <button type="submit" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
+                                            
                                         </td>
+                                        
                                     </tr>
                                 @endforeach
                             </tbody>

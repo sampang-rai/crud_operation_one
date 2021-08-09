@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Tutor;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class TutorController extends Controller
 {
@@ -17,7 +19,8 @@ class TutorController extends Controller
     {
         $tutors = Tutor::all();
         return view('tutor.index',compact('tutors'));
-    }
+
+    } //End of index
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +30,8 @@ class TutorController extends Controller
     public function create()
     {
         return view('tutor.create');
-    }
+
+    } //End of create
 
     /**
      * Store a newly created resource in storage.
@@ -54,7 +58,8 @@ class TutorController extends Controller
         $tutor->save();
         $request->session()->flash('message','Added Successfully!');
         return redirect()->back();
-    }
+
+    } //End of store
 
     /**
      * Display the specified resource.
@@ -64,8 +69,10 @@ class TutorController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $tutor = Tutor::find($id);
+        return view('tutor.show',compact('tutor'));
+
+    } //End of show
 
     /**
      * Show the form for editing the specified resource.
@@ -77,7 +84,8 @@ class TutorController extends Controller
     {
         $tutor = Tutor::find($id);
         return view('tutor.edit',compact('tutor'));
-    }
+
+    } //End of edit
 
     /**
      * Update the specified resource in storage.
@@ -105,7 +113,8 @@ class TutorController extends Controller
         $tutor->update();
         $request->session()->flash('message', 'Updated Successfully.');
         return redirect()->back;
-    }
+
+    } //End of Update
 
     /**
      * Remove the specified resource from storage.
@@ -115,6 +124,17 @@ class TutorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tutor = Tutor::findOrFail($id);
+        Storage::disk('public')->delete('tutor/' .$tutor->photo);
+        $tutor->delete();
+        return redirect()->back();
+        // $tutor = Tutor::find($id);
+        // $destination = 'public/tutor/'.$tutor->photo;
+        // if(File::exists($destination))
+        // {
+        //     File::delete($destination);
+        // }
+        // $tutor->delete();
+        // return redirect()->back();
     }
 }
