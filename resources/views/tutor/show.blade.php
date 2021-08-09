@@ -16,13 +16,13 @@
                                 <img src="{{ asset($tutor->photo) }}" alt="" width="150">
                             </div>
 
-                            <div value="{{ $tutor->name }}"></div>
+                            
                             
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name">Full Name</label>
-                                        <input id="name" class="form-control" type="" name="name" value="{{ $tutor->name }}">
+                                        <input id="name" class="form-control" type="" name="name" value="{{ $tutor->name }}" disabled>
                                     </div>
                                 </div>
 

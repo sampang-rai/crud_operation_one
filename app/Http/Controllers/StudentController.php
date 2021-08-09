@@ -147,6 +147,7 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::find($id);
+        unlink($student->photo);
         $student->delete();
         return redirect()->back();
     }

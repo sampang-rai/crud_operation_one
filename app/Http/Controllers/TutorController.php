@@ -125,7 +125,7 @@ class TutorController extends Controller
     public function destroy($id)
     {
         $tutor = Tutor::findOrFail($id);
-        Storage::disk('public')->delete('tutor/' .$tutor->photo);
+        unlink($tutor->photo);
         $tutor->delete();
         return redirect()->back();
         // $tutor = Tutor::find($id);
