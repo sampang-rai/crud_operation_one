@@ -29,7 +29,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <input id="address" class="form-control" type="text" name="address" value="{{ $tutor->address }}">
+                                        <input id="address" class="form-control" type="text" name="address" value="{{ $tutor->address }}" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="mobile">Mobile</label>
-                                        <input id="mobile" class="form-control" type="text" name="mobile" value="{{ $tutor->mobile }}">
+                                        <input id="mobile" class="form-control" type="text" name="mobile" value="{{ $tutor->mobile }}" disabled>
                                     </div>
                         
                                 </div>
