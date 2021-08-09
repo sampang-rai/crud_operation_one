@@ -34,7 +34,7 @@
                                                 @csrf
                                                 @method('delete')
                                                 
-                                                <a href="tutors/{{ $tutor->id }}">view</a>
+                                                <a href="tutors/{{ $tutor->id }}" class="btn btn-primary btn-sm">view</a>
                                                 <a href="tutors/{{ $tutor->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
                                                 <button type="submit" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
                                             </form>

@@ -13,7 +13,7 @@
                             @method('put')
 
                             <div my-2>
-                                <img src="{{ asset($tutor->photo) }}" alt="" width="150">
+                                <img src="{{ asset($tutor->photo) }}" alt="" width="150" style="border-radius: 50%">
                             </div>
 
                             

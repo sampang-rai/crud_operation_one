@@ -28,7 +28,7 @@ Route::resource('/faculty',FacultyController::class);
 Route::resource('/teachers',TeacherController::class);
 Route::resource('/tutors', TutorController::class);
 
-Route::get('/tutor/delete/{id}', 'TutorController@destroy')->name('$tutor->photo');
+// Route::get('/tutor/delete/{id}', 'TutorController@destroy')->name('$tutor->photo');
 
 // Route::delete('tutors/{id}', [StudentController::class, 'destroy']);
 
