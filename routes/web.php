@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TutorController;
 use App\Models\Student;
@@ -27,10 +28,7 @@ Route::resource('/students',StudentController::class);
 Route::resource('/faculty',FacultyController::class);
 Route::resource('/teachers',TeacherController::class);
 Route::resource('/tutors', TutorController::class);
-
-// Route::get('/tutor/delete/{id}', 'TutorController@destroy')->name('$tutor->photo');
-
-// Route::delete('tutors/{id}', [StudentController::class, 'destroy']);
+Route::resource('/galleries',GalleryController::class);
 
 Auth::routes();
 

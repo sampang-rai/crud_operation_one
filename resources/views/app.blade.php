@@ -196,6 +196,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
+          <!-- Dashboard -->
           <li class="nav-item">
             <a href="/home" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -204,6 +205,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+
+          <!-- Student -->
           <li class="nav-item">
             <a href="/students" class="nav-link">
               <i class="nav-icon fas fa-user-graduate"></i>
@@ -212,14 +215,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+
+          <!-- Faculty -->
           <li class="nav-item">
             <a href="/faculty" class="nav-link">
-              <i class="nav-icon fas fa-glasses"></i>
+              <i class="nav-icon fas fa-list"></i>
               <p>
                 Faculty
               </p>
             </a>
           </li>
+
+          <!-- Teacher -->
           <li class="nav-item">
             <a href="/teachers" class="nav-link">
               <i class="nav-icon fas fa-chalkboard-teacher"></i>
@@ -228,6 +235,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+
+          <!-- Tutor -->
           <li class="nav-item">
             <a href="/tutors" class="nav-link">
               <i class="nav-icon fas fa-chalkboard-teacher"></i>
@@ -236,6 +245,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+
+          <!-- Image Gallery -->
+          <li class="nav-item">
+            <a href="/galleries" class="nav-link">
+              <i class="nav-icon fas fa-images"></i>
+              <p>
+                Image Gallery
+              </p>
+            </a>
+          </li>
+
+          <!-- Logout -->
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
