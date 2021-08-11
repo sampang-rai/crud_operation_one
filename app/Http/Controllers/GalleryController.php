@@ -47,7 +47,9 @@ class GalleryController extends Controller
             foreach($request->images as $image){
                 $galleryImage = new GalleryImage();
                 $newName = time() . $image->getClientOriginalName();
-                $image->move('galleryimage',$newName);
+                $image_resize = Image::make($image->getRealPath());
+                $image_resize->resize(800,600);
+                $image = $image_resize->save(public_path('galleryimage/'.$newName));
                 $galleryImage->name = 'galleryimage/' .$newName;
                 $galleryImage->gallery_id = $gallery->id;
                 $galleryImage->save();
@@ -66,6 +68,7 @@ class GalleryController extends Controller
     public function show($id)
     {
         $photos = GalleryImage::where('gallery_id',$id)->get();
+        
         return view('gallery.show',compact('photos'));
     }
 
